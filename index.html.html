@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>고철 스크랩 통합관리 용역 계약 — 임원 보고</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Malgun Gothic','Apple SD Gothic Neo','Noto Sans KR',sans-serif;background:#eef0f4;color:#1a1a2e;font-size:15px;line-height:1.6}
+
+/* ── HEADER ── */
+.hd{background:linear-gradient(120deg,#12172b 0%,#1a2a4a 60%,#0f3460 100%);color:#fff;padding:18px 36px 16px;display:flex;justify-content:space-between;align-items:flex-end}
+.hd-l .tag{font-size:10px;letter-spacing:2.5px;color:#e94560;font-weight:700;text-transform:uppercase;margin-bottom:5px}
+.hd-l h1{font-size:22px;font-weight:800;letter-spacing:-.5px}
+.hd-l p{font-size:13px;color:rgba(255,255,255,.45);margin-top:3px}
+.hd-r{text-align:right;font-size:12px;color:rgba(255,255,255,.45);line-height:2}
+.hd-r strong{color:rgba(255,255,255,.9);font-size:14px;display:block}
+
+/* ── ALERT ── */
+.alert{background:#fffbeb;border-left:5px solid #f59e0b;padding:10px 36px;font-size:13px;color:#78350f;display:flex;align-items:center;gap:8px}
+.alert strong{color:#92400e}
+
+/* ── WRAP ── */
+.wrap{padding:16px 36px 24px;display:flex;flex-direction:column;gap:12px}
+
+/* ── SECTION DIVIDER ── */
+.sec{font-size:10px;font-weight:700;letter-spacing:2px;color:#b0b7c3;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin:2px 0}
+.sec::after{content:'';flex:1;height:1px;background:#dde1e9}
+
+/* ── 계약 개요 인포바 ── */
+.info-bar{background:#1a2a4a;display:flex;align-items:stretch;gap:0;padding:0 36px}
+.ib-item{display:flex;flex-direction:column;justify-content:center;padding:11px 24px;border-right:1px solid rgba(255,255,255,.1);flex:1}
+.ib-item:last-child{border-right:none}
+.ib-label{font-size:10px;color:rgba(255,255,255,.4);font-weight:700;letter-spacing:.5px;margin-bottom:3px}
+.ib-value{font-size:14px;color:#fff;font-weight:700;line-height:1.3}
+.ib-value.accent{color:#f87171;font-size:16px;font-weight:800}
+.ib-value.warn{color:#fbbf24}
+
+/* ── KPI ROW ── */
+.top-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.kpi{background:#fff;border-radius:10px;padding:22px 24px;box-shadow:0 1px 6px rgba(0,0,0,.07);position:relative;overflow:hidden}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.kpi.c1::before{background:#3b82f6}.kpi.c2::before{background:#e94560}.kpi.c3::before{background:#10b981}
+.kpi .lbl{font-size:12px;color:#9ca3af;font-weight:700;letter-spacing:.5px}
+.kpi .val{font-size:38px;font-weight:900;color:#111827;letter-spacing:-1.5px;margin:7px 0 5px;line-height:1}
+.kpi .val span{font-size:16px;font-weight:500;color:#6b7280}
+.kpi .sub{font-size:13px;color:#9ca3af}
+.kpi .ico{position:absolute;right:20px;top:18px;font-size:32px;opacity:.08}
+
+/* ── 카드 공통 ── */
+.card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.ctitle{font-size:11px;font-weight:700;letter-spacing:1px;color:#9ca3af;text-transform:uppercase;margin-bottom:10px;padding-bottom:7px;border-bottom:1px solid #f0f2f5}
+
+/* ── 명목 테이블 ── */
+.t{width:100%;border-collapse:collapse}
+.t th{background:#f8fafc;font-size:11px;font-weight:700;color:#6b7280;letter-spacing:.3px;padding:9px 10px;text-align:left;border-bottom:2px solid #e2e6ed;white-space:nowrap}
+.t td{padding:11px 10px;border-bottom:1px solid #f0f2f5;vertical-align:middle;font-size:13px;color:#374151}
+.t tbody tr:last-child td{border-bottom:none}
+.t tbody tr:hover td{background:#fafbff}
+.badge{display:inline-block;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700;white-space:nowrap}
+.핵심{background:#fee2e2;color:#b91c1c}.보조{background:#dbeafe;color:#1d4ed8}.관리{background:#ede9fe;color:#5b21b6}.안전{background:#d1fae5;color:#065f46}
+.amt{font-weight:700;color:#111827;white-space:nowrap;text-align:right;font-size:13px}
+.evd{color:#9ca3af;font-size:12px;white-space:nowrap}
+.t-total td{background:#f5f7fa;font-weight:700;font-size:14px}
+.t-vat td{background:#fff8f8;font-size:12px;color:#9ca3af}
+.red-amt{color:#e94560;font-weight:800;font-size:16px;text-align:right}
+
+/* ── 중간 행: 리스크 + 단가 + 기대효과 ── */
+.mid-row{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+
+/* ── 리스크 ── */
+.risk{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid #f0f2f5;align-items:flex-start}
+.risk:last-child{border-bottom:none;padding-bottom:0}
+.rdot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.rdot.h{background:#e94560}.rdot.m{background:#f59e0b}.rdot.l{background:#10b981}
+.rtxt strong{font-size:13px;color:#111827;display:block;font-weight:700;margin-bottom:1px}
+.rtxt span{font-size:12px;color:#6b7280;line-height:1.5}
+
+/* ── 단가 바 ── */
+.prow{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #f0f2f5}
+.prow:last-child{border-bottom:none}
+.plbl{font-size:13px;font-weight:600;color:#374151;min-width:64px}
+.pbg{flex:1;background:#f0f2f5;border-radius:4px;height:9px;overflow:hidden}
+.pbar{height:100%;border-radius:4px}
+.pval{font-size:13px;font-weight:700;color:#111827;min-width:58px;text-align:right}
+.pnote{font-size:11px;color:#b0b7c3;margin-top:8px}
+
+/* ── 기대효과 ── */
+.effect{display:flex;gap:8px;padding:8px 0;border-bottom:1px solid #f0f2f5;align-items:flex-start}
+.effect:last-child{border-bottom:none;padding-bottom:0}
+.eff-ico{font-size:16px;flex-shrink:0;line-height:1.4}
+.eff-txt strong{font-size:13px;color:#111827;display:block;font-weight:700}
+.eff-txt span{font-size:12px;color:#6b7280}
+
+/* ── 체크리스트 ── */
+.bottom-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.cl-head{font-size:13px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:7px}
+.cl-head .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.ci{display:flex;align-items:flex-start;gap:8px;padding:6px 0;border-bottom:1px solid #f5f7fa;font-size:13px;color:#374151;line-height:1.5}
+.ci:last-child{border-bottom:none}
+.ci::before{content:'○';font-size:12px;color:#c9d0da;flex-shrink:0;margin-top:2px}
+
+/* ── FOOTER ── */
+.ft{background:#12172b;color:rgba(255,255,255,.3);font-size:11px;text-align:center;padding:13px;letter-spacing:.5px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hd">
+  <div class="hd-l">
+    <div class="tag">Executive Report · Confidential</div>
+    <h1>고철 스크랩 통합관리 용역 계약</h1>
+    <p>신신솔루션 위탁계약 검토 — 명목 적정성 분석 및 리스크 점검</p>
+  </div>
+  <div class="hd-r">
+    <strong>2026.06.23</strong>
+    계약 대상사 : 신신솔루션<br>
+    대상 공장 : 김해 · 창원1 · 창원2
+  </div>
+</div>
+
+<!-- ALERT -->
+<div class="alert">
+  ⚠️ <strong>특수관계인 주의</strong> — 신신솔루션 대표는 당사 대표이사의 <strong>삼촌</strong>으로, 이사회·감사 보고 대상 거래입니다. 계약 적정성 소명 및 제3자 견적 확보 필수.
+</div>
+
+<!-- 계약 개요 인포바 -->
+<div class="info-bar">
+  <div class="ib-item">
+    <div class="ib-label">수탁업체</div>
+    <div class="ib-value">신신솔루션</div>
+  </div>
+  <div class="ib-item">
+    <div class="ib-label">특수관계</div>
+    <div class="ib-value warn">대표이사 삼촌</div>
+  </div>
+  <div class="ib-item">
+    <div class="ib-label">투입인력</div>
+    <div class="ib-value">전담 1인 (사내 대체 불가)</div>
+  </div>
+  <div class="ib-item">
+    <div class="ib-label">관리 처리업체</div>
+    <div class="ib-value">3개사 조율</div>
+  </div>
+  <div class="ib-item">
+    <div class="ib-label">야간·휴일 출동</div>
+    <div class="ib-value">월 4~6회</div>
+  </div>
+  <div class="ib-item" style="border-right:none">
+    <div class="ib-label">월 용역료 (VAT 별도)</div>
+    <div class="ib-value accent">5,000,000원</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ① KPI 3박스 (전체 폭) -->
+  <div class="top-row">
+    <div class="kpi c1">
+      <div class="ico">💰</div>
+      <div class="lbl">월 용역료 (VAT 별도)</div>
+      <div class="val">500<span>만원</span></div>
+      <div class="sub">연간 6,000만원 · VAT 포함 6,600만원</div>
+    </div>
+    <div class="kpi c2">
+      <div class="ico">🏭</div>
+      <div class="lbl">관리 대상 공장</div>
+      <div class="val">3<span>개소</span></div>
+      <div class="sub">김해 · 창원1공장 · 창원2공장</div>
+    </div>
+    <div class="kpi c3">
+      <div class="ico">🔄</div>
+      <div class="lbl">월 계량동행 / 야간출동</div>
+      <div class="val">20<span>회+</span></div>
+      <div class="sub">반출 24~39회 / 야간·휴일 4~6회</div>
+    </div>
+  </div>
+
+  <!-- ② 용역 명목 테이블 -->
+  <div class="sec">용역 명목 구성 및 월 산출 근거</div>
+  <div class="card" style="padding:14px 18px">
+    <table class="t">
+      <thead>
+        <tr>
+          <th style="width:28px">No</th>
+          <th style="width:52px">구분</th>
+          <th style="min-width:160px">용역 명목</th>
+          <th>업무 요약 및 정당화 근거</th>
+          <th style="width:170px">필수 증빙</th>
+          <th style="width:96px;text-align:right">월 산출액</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:#c4c9d4;font-weight:700;font-size:12px">1</td>
+          <td><span class="badge 핵심">핵심</span></td>
+          <td style="font-weight:700">전담 관리인력 운영비</td>
+          <td>사내직원 대체 불가한 전담 1인 — 하루 반나절 이상 공장 현장 활동</td>
+          <td class="evd">활동일지 · 현장사진</td>
+          <td class="amt">2,800,000</td>
+        </tr>
+        <tr>
+          <td style="color:#c4c9d4;font-weight:700;font-size:12px">2</td>
+          <td><span class="badge 핵심">핵심</span></td>
+          <td style="font-weight:700">3개 공장 순회·상주 이동관리비</td>
+          <td>창원2 상주 + 김해 주 2~3회 방문 — 단일 공장이 아닌 복수 사업장 관리</td>
+          <td class="evd">방문일지 · 이동경로표</td>
+          <td class="amt">500,000</td>
+        </tr>
+        <tr>
+          <td style="color:#c4c9d4;font-weight:700;font-size:12px">3</td>
+          <td><span class="badge 핵심">핵심</span></td>
+          <td style="font-weight:700">계근 동행 및 계근표 검증비</td>
+          <td>주 5회 이상 계량 현장 동행 — 중량 누락·단가 오류·정산 착오 방지</td>
+          <td class="evd">계근표 대조확인서</td>
+          <td class="amt">500,000</td>
+        </tr>
+        <tr>
+          <td style="color:#c4c9d4;font-weight:700;font-size:12px">4</td>
+          <td><span class="badge 보조">보조</span></td>
+          <td style="font-weight:700">반출 일정·처리업체 배차 조율비</td>
+          <td>기존 운반·처리업체 3곳 배차 스케줄 조율 및 지연 대응 — 생산일정 연동</td>
+          <td class="evd">배차요청서 · 반출일정표</td>
+          <td class="amt">400,000</td>
+        </tr>
+        <tr>
+          <td style="color:#c4c9d4;font-weight:700;font-size:12px">5</td>
+          <td><span class="badge 핵심">핵심</span></td>
+          <td style="font-weight:700">야간·휴일 긴급 현장출동 대응비</td>
+          <td>월 4~6회 실제 출동 — 시간외 수당이 아닌 위탁 용역 계약상 정당한 항목</td>
+          <td class="evd">출동기록 · 일시·소요시간</td>
+          <td class="amt">700,000</td>
+        </tr>
+        <tr>
+          <td style="color:#c4c9d4;font-weight:700;font-size:12px">6</td>
+          <td><span class="badge 안전">안전</span></td>
+          <td style="font-weight:700">품목별 분리배출·혼입방지 관리비</td>
+          <td>생철·스텐·알루미늄·인청동·동류 혼입 방지 — 고가금속 잡철 혼입 시 매각손실 직결</td>
+          <td class="evd">품목별 보관구역 사진</td>
+          <td class="amt">0 <span style="font-size:11px;color:#9ca3af">(포함)</span></td>
+        </tr>
+        <tr>
+          <td style="color:#c4c9d4;font-weight:700;font-size:12px">7</td>
+          <td><span class="badge 관리">관리</span></td>
+          <td style="font-weight:700">단가협상·시세비교·월간 실적보고</td>
+          <td>처리업체 3곳 단가 비교·협상 대행, 월별 반출량·매각단가·업체별 실적 보고서 제출</td>
+          <td class="evd">단가비교표 · 월간보고서</td>
+          <td class="amt">100,000</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="t-total">
+          <td colspan="5" style="text-align:right;padding:10px 10px;color:#374151">합 계 (VAT 별도)</td>
+          <td class="red-amt" style="padding:10px 10px">5,000,000</td>
+        </tr>
+        <tr class="t-vat">
+          <td colspan="5" style="text-align:right;padding:6px 10px">VAT 포함 합계</td>
+          <td style="text-align:right;padding:6px 10px;font-weight:700;font-size:13px">5,500,000</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- ③ 리스크 + 단가 + 기대효과 -->
+  <div class="sec">리스크 점검 · 단가 현황 · 기대효과</div>
+  <div class="mid-row">
+
+    <!-- 리스크 -->
+    <div class="card">
+      <div class="ctitle">계약 리스크 · 쟁점</div>
+      <div class="risk">
+        <div class="rdot h"></div>
+        <div class="rtxt">
+          <strong>특수관계인 거래 — 최우선 관리</strong>
+          <span>이사회·감사위원회 보고 대상. 배임·횡령 이슈 예방 위해 제3자 견적 2건 이상 필수 확보</span>
+        </div>
+      </div>
+      <div class="risk">
+        <div class="rdot h"></div>
+        <div class="rtxt">
+          <strong>매각금액 미확인</strong>
+          <span>처리업체 3곳의 실제 월 매각금액 미집계. 억원대 추정 시 용역료는 매각액 대비 3~5% 수준 — 정당성 확보 가능하나 반드시 실적 기록 필요</span>
+        </div>
+      </div>
+      <div class="risk">
+        <div class="rdot m"></div>
+        <div class="rtxt">
+          <strong>월정료 과다 논란 대응</strong>
+          <span>7개 명목 세분화로 산출근거 명시. 단순 현장관리가 아닌 "매각수익 보전형 복합 용역"임을 강조</span>
+        </div>
+      </div>
+      <div class="risk">
+        <div class="rdot m"></div>
+        <div class="rtxt">
+          <strong>경비용역 명칭 사용 금지</strong>
+          <span>경비업 허가 없이 "경비 용역" 표기 불가 (경비업법 위반) → "현장 입회 및 반출 안전관리 협조"로 반드시 변경</span>
+        </div>
+      </div>
+      <div class="risk">
+        <div class="rdot l"></div>
+        <div class="rtxt">
+          <strong>계약서 명칭 변경 권고</strong>
+          <span>현행 "고철 스크랩 처리 위탁 계약" → <b>"고철 스크랩 통합관리 용역 계약"</b>으로 복합 용역 성격 명확화</span>
+        </div>
+      </div>
+      <div class="risk">
+        <div class="rdot l"></div>
+        <div class="rtxt">
+          <strong>용역 이행 실적 증빙 체계화</strong>
+          <span>내부감사·세무조사 대비 활동일지·계근표·출동기록·월간보고서를 월별 파일링 필수</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 처리업체 단가 -->
+    <div class="card">
+      <div class="ctitle">처리업체 매입단가 현황 (원/톤)</div>
+      <div class="prow">
+        <span class="plbl">폐목</span>
+        <div class="pbg"><div class="pbar" style="width:100%;background:#10b981"></div></div>
+        <span class="pval">230,000</span>
+      </div>
+      <div class="prow">
+        <span class="plbl">영남금속</span>
+        <div class="pbg"><div class="pbar" style="width:78%;background:#3b82f6"></div></div>
+        <span class="pval">180,000</span>
+      </div>
+      <div class="prow">
+        <span class="plbl">대한금속</span>
+        <div class="pbg"><div class="pbar" style="width:74%;background:#6366f1"></div></div>
+        <span class="pval">170,000</span>
+      </div>
+      <div class="prow">
+        <span class="plbl">동부스틸</span>
+        <div class="pbg"><div class="pbar" style="width:74%;background:#f59e0b"></div></div>
+        <span class="pval">170,000</span>
+      </div>
+      <div class="pnote">※ 단가 협상·조율 = 신신솔루션 핵심 담당 업무<br>※ 업체별 최대 60,000원/톤 단가 격차 — 협상 여지 존재</div>
+    </div>
+
+    <!-- 기대효과 -->
+    <div class="card">
+      <div class="ctitle">용역 기대효과</div>
+      <div class="effect">
+        <div class="eff-ico">📈</div>
+        <div class="eff-txt">
+          <strong>매각수익 개선</strong>
+          <span>업체 간 단가 비교·협상으로 톤당 최대 60,000원 단가 개선 가능</span>
+        </div>
+      </div>
+      <div class="effect">
+        <div class="eff-ico">🛡️</div>
+        <div class="eff-txt">
+          <strong>혼입손실 예방</strong>
+          <span>스텐·알루미늄·동류가 잡철로 혼입 시 발생하는 고가금속 매각손실 차단</span>
+        </div>
+      </div>
+      <div class="effect">
+        <div class="eff-ico">⚖️</div>
+        <div class="eff-txt">
+          <strong>계근 오류 즉시 대응</strong>
+          <span>현장 동행으로 중량 누락·단가 오류 실시간 확인 및 정산 분쟁 예방</span>
+        </div>
+      </div>
+      <div class="effect">
+        <div class="eff-ico">🚨</div>
+        <div class="eff-txt">
+          <strong>야간 긴급 대응</strong>
+          <span>사내 대응 불가한 야간·휴일 반출 긴급상황 즉시 처리로 생산지연 예방</span>
+        </div>
+      </div>
+      <div class="effect">
+        <div class="eff-ico">📋</div>
+        <div class="eff-txt">
+          <strong>감사 대응 자료 확보</strong>
+          <span>월간 보고서·계근 대조표로 회계감사·세무조사 대응 자료 상시 구비</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ④ 체크리스트 -->
+  <div class="sec">결재 전 점검 체크리스트</div>
+  <div class="bottom-row">
+
+    <div class="card">
+      <div class="cl-head"><div class="dot" style="background:#e94560"></div><span style="color:#e94560">긴급 확인 (계약 前 필수)</span></div>
+      <div class="ci">처리업체 3곳 월 실제 매각금액 집계 — 용역료 비율 산출 및 적정성 소명용</div>
+      <div class="ci">신신솔루션 업종·업태 확인 — 용역 수행 가능 여부 (사업자등록증 검토)</div>
+      <div class="ci">이사회·감사위원회 특수관계인 거래 보고 절차 확인 및 이행</div>
+      <div class="ci">동종 용역 제3자 견적 2건 이상 수취 — 시장가격 비교 근거 확보</div>
+    </div>
+
+    <div class="card">
+      <div class="cl-head"><div class="dot" style="background:#f59e0b"></div><span style="color:#b45309">계약서 정비 (서명 前)</span></div>
+      <div class="ci">계약명칭·명목 7개 항목 세분화 반영 — 개정 계약서 작성</div>
+      <div class="ci">"경비 용역" 표현 → "현장 입회·안전관리 협조"로 전면 수정</div>
+      <div class="ci">전자결재 결재선 재검토 — 특수관계인 거래 별도 승인 라인 추가</div>
+      <div class="ci">스크랩 품목 분리배출·외부차량 반출 입회 조항 계약서에 명시</div>
+    </div>
+
+    <div class="card">
+      <div class="cl-head"><div class="dot" style="background:#10b981"></div><span style="color:#065f46">계약 후 상시 관리</span></div>
+      <div class="ci">월간 실적보고서·활동일지 접수 및 파일링 체계 수립</div>
+      <div class="ci">계근표 대조확인서·출동기록 월별 보관 (감사 대비)</div>
+      <div class="ci">분기별 용역 이행 실적 점검 — 내부감사 대비 자료 축적</div>
+      <div class="ci">매각금액 대비 용역료 비율 연 1회 적정성 재평가</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="ft">CONFIDENTIAL — 임원 보고용 내부 문서 &nbsp;|&nbsp; 신신사 내부 검토 자료 &nbsp;|&nbsp; 2026.06.23 작성</div>
+
+</body>
+</html>
