@@ -219,7 +219,7 @@
     <h1>AI 슈퍼사이클의 <em>과열과 조정</em> 사이 —<br/>한·미 반도체 대표 10종목 투자 전략 보고서</h1>
     <p class="lede">거시·지정학·산업·수급을 통합 분석하고, 한·미 대표 반도체 각 5개사의 방향성과 목표가를 정리했습니다. 종목 시세·목표가는 물론 마켓 지표·이벤트 D-day·뉴스·관심종목까지 평일 아침 자동 갱신됩니다(Investing.com 등 종합·전일 종가 기준).</p>
     <div class="meta-row">
-      <span class="chip">기준일 <b>2026년 7월 5일</b></span>
+      <span class="chip">기준일 <b id="asofHero">2026년 7월 5일</b></span>
       <span class="chip gold">📈 전일 종가 매일 자동 갱신</span> <span class="fresh" data-fresh></span>
       <span class="chip">대상 <b>KR 5 · US 5</b></span>
       <span class="chip">성격 <b>정보 제공용 · 투자자문 아님</b></span>
@@ -425,11 +425,11 @@
       <table>
         <thead><tr><th>종목 (코드)</th><th>전일 종가*</th><th>컨센 목표가</th><th>주요 IB/증권사</th><th>상승여력</th><th>의견</th></tr></thead>
         <tbody>
-          <tr><td class="tick">삼성전자 <span class="sub">005930</span></td><td class="mono">₩286,000</td><td class="mono">₩461,687</td><td class="mono">골드만 ₩480K · 한국투자 ₩590K</td><td><b class="pos">약 +61%</b></td><td><span class="badge b-buy">적극매수</span></td></tr>
-          <tr><td class="tick">SK하이닉스 <span class="sub">000660</span></td><td class="mono">₩2,425,000</td><td class="mono">₩3,159,000</td><td class="mono">바클레이즈 상향 · UBS·골드만 HBM 최선호</td><td><b class="pos">약 +30%</b></td><td><span class="badge b-buy">적극매수</span></td></tr>
-          <tr><td class="tick">한미반도체 <span class="sub">042700</span></td><td class="mono">약 ₩232,000</td><td class="mono">₩180K~420K</td><td class="mono">메릴린치 ₩420K(최고)</td><td><b style="color:var(--amber)">혼재</b></td><td><span class="badge b-hold">과열 주의</span></td></tr>
-          <tr><td class="tick">이오테크닉스 <span class="sub">039030</span></td><td class="mono">조정 국면</td><td class="mono">₩547,889</td><td class="mono">최고 ₩610K · 신한 ₩485K</td><td><b class="pos">상단 여력</b></td><td><span class="badge b-buy">매수</span></td></tr>
-          <tr><td class="tick">리노공업 <span class="sub">058470</span></td><td class="mono">데이터 편차</td><td class="mono">견해 상충</td><td class="mono">현대차 ₩250K · 보수 시각 하향</td><td><b style="color:var(--us)">중립~매수</b></td><td><span class="badge b-neu">선별</span></td></tr>
+          <tr><td class="tick">삼성전자 <span class="sub">005930</span></td><td class="mono" id="tblpx-005930">₩286,000</td><td class="mono">₩461,687</td><td class="mono">골드만 ₩480K · 한국투자 ₩590K</td><td><b class="pos">약 +61%</b></td><td><span class="badge b-buy">적극매수</span></td></tr>
+          <tr><td class="tick">SK하이닉스 <span class="sub">000660</span></td><td class="mono" id="tblpx-000660">₩2,425,000</td><td class="mono">₩3,159,000</td><td class="mono">바클레이즈 상향 · UBS·골드만 HBM 최선호</td><td><b class="pos">약 +30%</b></td><td><span class="badge b-buy">적극매수</span></td></tr>
+          <tr><td class="tick">한미반도체 <span class="sub">042700</span></td><td class="mono" id="tblpx-042700">약 ₩232,000</td><td class="mono">₩180K~420K</td><td class="mono">메릴린치 ₩420K(최고)</td><td><b style="color:var(--amber)">혼재</b></td><td><span class="badge b-hold">과열 주의</span></td></tr>
+          <tr><td class="tick">이오테크닉스 <span class="sub">039030</span></td><td class="mono" id="tblpx-039030">조정 국면</td><td class="mono">₩547,889</td><td class="mono">최고 ₩610K · 신한 ₩485K</td><td><b class="pos">상단 여력</b></td><td><span class="badge b-buy">매수</span></td></tr>
+          <tr><td class="tick">리노공업 <span class="sub">058470</span></td><td class="mono" id="tblpx-058470">데이터 편차</td><td class="mono">견해 상충</td><td class="mono">현대차 ₩250K · 보수 시각 하향</td><td><b style="color:var(--us)">중립~매수</b></td><td><span class="badge b-neu">선별</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -441,7 +441,7 @@
     <div class="card"><h4 style="font-size:14px;margin-bottom:8px">🚦 밸류 신호등 <span class="sub" style="font-weight:600">전일 종가 vs 컨센 목표가 · 상승여력</span></h4><div class="vsrow" id="vsKR"></div></div>
 
 
-    <div class="co"><div class="co-top"><div><div class="co-name">삼성전자 <span>005930 · KOSPI</span></div><div class="co-tag"><span class="badge b-kr">한국</span> 종합 반도체 · 메모리 · 파운드리</div></div><div class="co-price"><div class="p">₩286,000</div><div class="u neg">7/2 −9.1%</div></div></div>
+    <div class="co"><div class="co-top"><div><div class="co-name">삼성전자 <span>005930 · KOSPI</span></div><div class="co-tag"><span class="badge b-kr">한국</span> 종합 반도체 · 메모리 · 파운드리</div></div><div class="co-price"><div class="p" id="cardpx-005930">₩286,000</div><div class="u neg" id="cardchg-005930">7/2 −9.1%</div></div></div>
       <div class="co-body">
         <div class="row"><div class="pill"><span class="l">컨센 목표가</span><span class="d">₩461,687</span></div><div class="pill"><span class="l">골드만삭스</span><span class="d">₩480,000</span></div><div class="pill"><span class="l">한국투자</span><span class="d">₩590,000</span></div><div class="pill"><span class="l">의견</span><span class="d">적극매수(36인)</span></div></div>
         <h5>산업 전략 · 방향성</h5>
@@ -452,7 +452,7 @@
       </div>
     </div>
 
-    <div class="co"><div class="co-top"><div><div class="co-name">SK하이닉스 <span>000660 · KOSPI</span></div><div class="co-tag"><span class="badge b-kr">한국</span> HBM 절대강자 · 엔비디아 주력 공급사</div></div><div class="co-price"><div class="p">₩2,425,000</div><div class="u neg">주간 −12%대</div></div></div>
+    <div class="co"><div class="co-top"><div><div class="co-name">SK하이닉스 <span>000660 · KOSPI</span></div><div class="co-tag"><span class="badge b-kr">한국</span> HBM 절대강자 · 엔비디아 주력 공급사</div></div><div class="co-price"><div class="p" id="cardpx-000660">₩2,425,000</div><div class="u neg" id="cardchg-000660">주간 −12%대</div></div></div>
       <div class="co-body">
         <div class="row"><div class="pill"><span class="l">컨센 목표가</span><span class="d">₩3,159,000</span></div><div class="pill"><span class="l">상단</span><span class="d">₩4,700,000</span></div><div class="pill"><span class="l">52주 범위</span><span class="d">₩245K~2,987K</span></div><div class="pill"><span class="l">의견</span><span class="d">적극매수(35/37)</span></div></div>
         <h5>산업 전략 · 방향성</h5>
@@ -463,7 +463,7 @@
       </div>
     </div>
 
-    <div class="co"><div class="co-top"><div><div class="co-name">한미반도체 <span>042700 · KOSPI</span></div><div class="co-tag"><span class="badge b-kr">한국</span> HBM TC본더 세계 1위(약 71%)</div></div><div class="co-price"><div class="p">약 ₩232,000</div><div class="u n">'26 급등 후 조정</div></div></div>
+    <div class="co"><div class="co-top"><div><div class="co-name">한미반도체 <span>042700 · KOSPI</span></div><div class="co-tag"><span class="badge b-kr">한국</span> HBM TC본더 세계 1위(약 71%)</div></div><div class="co-price"><div class="p" id="cardpx-042700">약 ₩232,000</div><div class="u n" id="cardchg-042700">'26 급등 후 조정</div></div></div>
       <div class="co-body">
         <div class="row"><div class="pill"><span class="l">최고 목표(메릴)</span><span class="d">₩420,000</span></div><div class="pill"><span class="l">목표 범위</span><span class="d">₩180K~420K</span></div><div class="pill"><span class="l">'26E 매출</span><span class="d">+39~64%</span></div><div class="pill"><span class="l">'26E 영업익</span><span class="d">+52~60%</span></div></div>
         <h5>산업 전략 · 방향성</h5>
@@ -497,11 +497,11 @@
       <table>
         <thead><tr><th>Ticker</th><th>전일 종가*</th><th>컨센 목표가</th><th>주요 IB(골드만 등)</th><th>포지션</th><th>의견</th></tr></thead>
         <tbody>
-          <tr><td class="tick">NVDA <span class="sub">엔비디아</span></td><td class="mono">$194.83</td><td class="mono">$303.84</td><td class="mono">골드만·모건스탠리 ~$250</td><td><b class="pos">컨센比 +56%</b></td><td><span class="badge b-buy">매수(95%)</span></td></tr>
-          <tr><td class="tick">AVGO <span class="sub">브로드컴</span></td><td class="mono">약 $365</td><td class="mono">$493.24</td><td class="mono">모건스탠리 $443</td><td><b class="pos">고점比 −26%</b></td><td><span class="badge b-buy">적극매수(48/50)</span></td></tr>
-          <tr><td class="tick">AMD <span class="sub">에이엠디</span></td><td class="mono">고점 $580.91</td><td class="mono">$478</td><td class="mono">Cantor $700 · UBS $670</td><td><b style="color:var(--amber)">컨센 상회·변동↑</b></td><td><span class="badge b-hold">선별매수</span></td></tr>
-          <tr><td class="tick">MU <span class="sub">마이크론</span></td><td class="mono">약 $975</td><td class="mono">$489~536</td><td class="mono">골드만 $1,100 · 모건스탠리 $1,050</td><td><b class="pos">IB比 +8~13%</b></td><td><span class="badge b-hold">밸류 부담</span></td></tr>
-          <tr><td class="tick">MRVL <span class="sub">마벨</span></td><td class="mono">$246.82</td><td class="mono">$306~345</td><td class="mono">B.Riley $345 · 상단 $356</td><td><b class="pos">고점比 −22%</b></td><td><span class="badge b-buy">매수</span></td></tr>
+          <tr><td class="tick">NVDA <span class="sub">엔비디아</span></td><td class="mono" id="tblpx-NVDA">$194.83</td><td class="mono">$303.84</td><td class="mono">골드만·모건스탠리 ~$250</td><td><b class="pos">컨센比 +56%</b></td><td><span class="badge b-buy">매수(95%)</span></td></tr>
+          <tr><td class="tick">AVGO <span class="sub">브로드컴</span></td><td class="mono" id="tblpx-AVGO">약 $365</td><td class="mono">$493.24</td><td class="mono">모건스탠리 $443</td><td><b class="pos">고점比 −26%</b></td><td><span class="badge b-buy">적극매수(48/50)</span></td></tr>
+          <tr><td class="tick">AMD <span class="sub">에이엠디</span></td><td class="mono" id="tblpx-AMD">고점 $580.91</td><td class="mono">$478</td><td class="mono">Cantor $700 · UBS $670</td><td><b style="color:var(--amber)">컨센 상회·변동↑</b></td><td><span class="badge b-hold">선별매수</span></td></tr>
+          <tr><td class="tick">MU <span class="sub">마이크론</span></td><td class="mono" id="tblpx-MU">약 $975</td><td class="mono">$489~536</td><td class="mono">골드만 $1,100 · 모건스탠리 $1,050</td><td><b class="pos">IB比 +8~13%</b></td><td><span class="badge b-hold">밸류 부담</span></td></tr>
+          <tr><td class="tick">MRVL <span class="sub">마벨</span></td><td class="mono" id="tblpx-MRVL">$246.82</td><td class="mono">$306~345</td><td class="mono">B.Riley $345 · 상단 $356</td><td><b class="pos">고점比 −22%</b></td><td><span class="badge b-buy">매수</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -513,7 +513,7 @@
     <div class="card"><h4 style="font-size:14px;margin-bottom:8px">🚦 밸류 신호등 <span class="sub" style="font-weight:600">전일 종가 vs 컨센 목표가 · 상승여력</span></h4><div class="vsrow" id="vsUS"></div></div>
 
 
-    <div class="co"><div class="co-top"><div><div class="co-name">NVIDIA <span>NVDA · Nasdaq</span></div><div class="co-tag"><span class="badge b-us">미국</span> AI 가속기(GPU) 절대강자 · CUDA 생태계</div></div><div class="co-price"><div class="p">$194.83</div><div class="u neg">고점 $300대 → −35%</div></div></div>
+    <div class="co"><div class="co-top"><div><div class="co-name">NVIDIA <span>NVDA · Nasdaq</span></div><div class="co-tag"><span class="badge b-us">미국</span> AI 가속기(GPU) 절대강자 · CUDA 생태계</div></div><div class="co-price"><div class="p" id="cardpx-NVDA">$194.83</div><div class="u neg" id="cardchg-NVDA">고점 $300대 → −35%</div></div></div>
       <div class="co-body">
         <div class="row"><div class="pill"><span class="l">컨센 목표가</span><span class="d">$303.84</span></div><div class="pill"><span class="l">골드만·MS</span><span class="d">약 $250</span></div><div class="pill"><span class="l">FQ1'27 매출</span><span class="d">$81.6B(+85%)</span></div><div class="pill"><span class="l">데이터센터</span><span class="d">$75.2B(+92%)</span></div></div>
         <h5>산업 전략 · 방향성</h5>
@@ -524,7 +524,7 @@
       </div>
     </div>
 
-    <div class="co"><div class="co-top"><div><div class="co-name">Broadcom <span>AVGO · Nasdaq</span></div><div class="co-tag"><span class="badge b-us">미국</span> 커스텀 AI 칩(XPU) + 네트워킹 + 소프트웨어</div></div><div class="co-price"><div class="p">약 $365</div><div class="u neg">고점 $495 → −26%</div></div></div>
+    <div class="co"><div class="co-top"><div><div class="co-name">Broadcom <span>AVGO · Nasdaq</span></div><div class="co-tag"><span class="badge b-us">미국</span> 커스텀 AI 칩(XPU) + 네트워킹 + 소프트웨어</div></div><div class="co-price"><div class="p" id="cardpx-AVGO">약 $365</div><div class="u neg" id="cardchg-AVGO">고점 $495 → −26%</div></div></div>
       <div class="co-body">
         <div class="row"><div class="pill"><span class="l">컨센 목표가</span><span class="d">$493.24</span></div><div class="pill"><span class="l">모건스탠리</span><span class="d">$443</span></div><div class="pill"><span class="l">Q2 AI매출</span><span class="d">$10.8B(+143%)</span></div><div class="pill"><span class="l">의견</span><span class="d">적극매수 48/50</span></div></div>
         <h5>산업 전략 · 방향성</h5>
@@ -535,7 +535,7 @@
       </div>
     </div>
 
-    <div class="co"><div class="co-top"><div><div class="co-name">AMD <span>AMD · Nasdaq</span></div><div class="co-tag"><span class="badge b-us">미국</span> 엔비디아의 유일한 실질 대항마(Instinct MI)</div></div><div class="co-price"><div class="p">고점 $580.91</div><div class="u n">7/2 조정</div></div></div>
+    <div class="co"><div class="co-top"><div><div class="co-name">AMD <span>AMD · Nasdaq</span></div><div class="co-tag"><span class="badge b-us">미국</span> 엔비디아의 유일한 실질 대항마(Instinct MI)</div></div><div class="co-price"><div class="p" id="cardpx-AMD">고점 $580.91</div><div class="u n" id="cardchg-AMD">7/2 조정</div></div></div>
       <div class="co-body">
         <div class="row"><div class="pill"><span class="l">컨센 목표가</span><span class="d">$478</span></div><div class="pill"><span class="l">Cantor/UBS</span><span class="d">$700 / $670</span></div><div class="pill"><span class="l">MI400 '26매출</span><span class="d">약 $7.2B</span></div><div class="pill"><span class="l">Q2 DC 가이드</span><span class="d">$11.2B</span></div></div>
         <h5>산업 전략 · 방향성</h5>
@@ -547,12 +547,12 @@
     </div>
 
     <div class="grid2">
-      <div class="co" style="margin:0"><div class="co-top"><div><div class="co-name">Micron <span>MU</span></div><div class="co-tag"><span class="badge b-us">미국</span> HBM·DRAM · 美 유일 메모리</div></div><div class="co-price"><div class="p">$975</div><div class="u neg">주간 −19.6%</div></div></div>
+      <div class="co" style="margin:0"><div class="co-top"><div><div class="co-name">Micron <span>MU</span></div><div class="co-tag"><span class="badge b-us">미국</span> HBM·DRAM · 美 유일 메모리</div></div><div class="co-price"><div class="p" id="cardpx-MU">$975</div><div class="u neg" id="cardchg-MU">주간 −19.6%</div></div></div>
         <div class="co-body"><div class="row"><div class="pill"><span class="l">골드만/모건스탠리</span><span class="d">$1,100 / $1,050</span></div><div class="pill"><span class="l">52주 범위</span><span class="d">$103 ~ $1,255</span></div></div>
           <p style="font-size:14px"><b>2026년 HBM 완판(고정가)</b>·2027~28 선주문, DRAM 15년래 최악 부족의 수혜로 1년 약 <b>12배</b> 폭등. 골드만이 목표를 <b>$900→$1,100 상향</b>하며 IB 목표가 주가를 재차 상회. 단 주류 컨센($489~536)과의 괴리가 커 <span class="hl">밸류 논란</span> 지속.</p>
           <p class="sub"><b>방향성</b> — 실적 초강세이나 파생 변동성 큼. 신규는 <b>분할·되돌림 관찰</b>. <b>리스크</b>: 메모리 가격 사이클 반전.</p></div>
       </div>
-      <div class="co" style="margin:0"><div class="co-top"><div><div class="co-name">Marvell <span>MRVL</span></div><div class="co-tag"><span class="badge b-us">미국</span> 커스텀 실리콘 · 광(Optics)</div></div><div class="co-price"><div class="p">$246.82</div><div class="u neg">7/2 −12.1%</div></div></div>
+      <div class="co" style="margin:0"><div class="co-top"><div><div class="co-name">Marvell <span>MRVL</span></div><div class="co-tag"><span class="badge b-us">미국</span> 커스텀 실리콘 · 광(Optics)</div></div><div class="co-price"><div class="p" id="cardpx-MRVL">$246.82</div><div class="u neg" id="cardchg-MRVL">7/2 −12.1%</div></div></div>
         <div class="co-body"><div class="row"><div class="pill"><span class="l">목표가</span><span class="d">$306~345</span></div><div class="pill"><span class="l">YTD</span><span class="d">+176%</span></div></div>
           <p style="font-size:14px">AWS·구글과 <b>3나노 커스텀 XPU</b> 협력, "AI가 데이터센터 매출의 과반". 브로드컴에 이은 <b>제2 커스텀 실리콘 플레이어</b> + 광네트워킹 수혜. 고점 $316 대비 22% 조정으로 <b>여력 재확보</b>.</p>
           <p class="sub"><b>방향성</b> — 2026 H2 커스텀 램프·광 수요 지속. <b>리스크</b>: 고객 집중, 브로드컴 경쟁, 높은 변동성.</p></div>
@@ -628,7 +628,7 @@
       <div><div class="lbl">TODAY</div><div class="big" id="todayDate">—</div><div class="small">최근 3일 관찰창: <span id="recentWindow">—</span> · 마지막 확인 <span id="stamp">—</span></div></div>
       <div class="live-badge"><span class="pulse" style="background:#ff5a5a"></span> 날짜 자동 갱신</div>
     </div>
-    <div class="snap-note">📌 데이터 스냅샷 기준일: <b>2026년 7월 5일</b>. 날짜·요일은 여는 시점에 맞춰 자동 갱신되며, 시황 내용·종목 종가는 매일 자동 갱신(예약 작업) 시 함께 최신화됩니다.</div>
+    <div class="snap-note">📌 데이터 스냅샷 기준일: <b id="asofSnap">2026년 7월 5일</b>. 날짜·요일은 여는 시점에 맞춰 자동 갱신되며, 시황 내용·종목 종가는 매일 자동 갱신(예약 작업) 시 함께 최신화됩니다.</div>
 
     <div class="card" style="margin-top:16px">
       <h3 style="font-size:16px;margin-bottom:4px">📊 마켓 스냅샷 <span class="updchip"><span class="pulse"></span> 평일 자동 갱신</span> <span class="fresh" data-fresh></span></h3>
@@ -702,7 +702,7 @@
     </div>
     <h4>주요 출처 (Sources)</h4>
     <p class="src">종목·시세 — Investing.com, CNBC, Yahoo Finance, StockAnalysis, MarketScreener, Simply Wall St, 한국경제(KED) · 거시 — J.P. Morgan, Goldman Sachs, Federal Reserve(FOMC) · 지정학·유가 — Morgan Lewis(BIS), Congress.gov, World Bank, IEA · 산업 — WSTS, IDC, Deloitte, SK hynix Newsroom · IB 목표가 — Goldman Sachs, Morgan Stanley, UBS, Cantor Fitzgerald, Barclays, B.Riley, 한국투자, 현대차, 신한, 메릴린치.</p>
-    <p class="foot-disc">데이터 기준일 2026년 7월 5일 · 종목 데이터는 전일 종가 기준 매일 자동 갱신(예약 작업) 대상 · 대상: 한국(삼성전자·SK하이닉스·한미반도체·이오테크닉스·리노공업), 미국(NVIDIA·Broadcom·AMD·Micron·Marvell) · 본 문서는 정보 제공용이며 투자자문이 아닙니다.</p>
+    <p class="foot-disc">데이터 기준일 <span id="asofFoot">2026년 7월 5일</span> · 종목 데이터는 전일 종가 기준 매일 자동 갱신(예약 작업) 대상 · 대상: 한국(삼성전자·SK하이닉스·한미반도체·이오테크닉스·리노공업), 미국(NVIDIA·Broadcom·AMD·Micron·Marvell) · 본 문서는 정보 제공용이며 투자자문이 아닙니다.</p>
   </div>
 </footer>
 
@@ -811,45 +811,9 @@
 
   // ---- 마켓 대시보드 / 이벤트 / 뉴스 / 관심종목 / 스파크라인 (평일 자동 갱신 대상) ----
   (function(){
-    var MKT={
-      asOf:"2026-07-05(근사)",
-      market:[
-        {k:"원/달러",v:"₩1,553",s:"원화 약세(2009년 이후 최약세권)",d:"dn"},
-        {k:"미 10년물",v:"4.46%",s:"고금리 장기화",d:"dn"},
-        {k:"SOX 반도체",v:"12,626",s:"고점比 −11%(주간)",d:"dn"},
-        {k:"KOSPI",v:"8,088",s:"7/3 +5.8% 반등",d:"up"},
-        {k:"나스닥",v:"25,833",s:"−0.8%",d:"dn"},
-        {k:"VIX 변동성",v:"≈24",s:"조정으로 상승(근사)",d:"dn"},
-        {k:"공포·탐욕",v:"공포 ≈30",s:"심리 위축(근사)",d:"dn"},
-        {k:"DRAM/NAND",v:"+58~75%",s:"Q2 계약가 QoQ 급등",d:"up"},
-        {k:"HBM",v:"완판",s:"'26 소진·'27 선주문",d:"up"}
-      ],
-      events:[
-        {n:"FOMC 금리결정",d:"2026-07-29"},
-        {n:"삼성 2Q 잠정(예상)",d:"2026-07-31"},
-        {n:"엔비디아 실적(FQ2)",d:"2026-08-26"},
-        {n:"FOMC + 점도표",d:"2026-09-16"}
-      ],
-      news:[
-        {t:"반도체株 동반 급락 — 삼성 −9%·SK하이닉스 −15%, AI 수요 둔화 우려",s:"CNBC"},
-        {t:"SK하이닉스 하루 +10.9% 반등(₩2,425,000), 저가 매수 유입",s:"Investing.com"},
-        {t:"골드만, 마이크론 목표가 $900→$1,100 상향",s:"AOL"},
-        {t:"연준 6월 동결·매파 전환 — 점도표 연말 3.8% 인상 시사",s:"Federal Reserve"},
-        {t:"DRAM 계약가 Q2 +58~63%·NAND +70~75% QoQ — 메모리 초강세",s:"TrendForce"}
-      ],
-      spark:{
-        "005930":{n:"삼성전자",p:[250,278,300,286,296],last:"₩286,000",c:"−9.1%(7/2)",d:"dn"},
-        "000660":{n:"SK하이닉스",p:[2600,2870,2560,2187,2425],last:"₩2,425,000",c:"+10.9%(7/3)",d:"up"},
-        "042700":{n:"한미반도체",p:[250,262,248,232,238],last:"약 ₩232,000",c:"조정",d:"dn"},
-        "039030":{n:"이오테크닉스",p:[440,470,445,410,428],last:"조정 국면",c:"—",d:"nu"},
-        "058470":{n:"리노공업",p:[155,162,150,138,145],last:"코스닥 상위",c:"—",d:"nu"},
-        "NVDA":{n:"NVIDIA",p:[300,270,240,200,194.83],last:"$194.83",c:"−35%(고점比)",d:"dn"},
-        "AVGO":{n:"Broadcom",p:[495,440,400,370,365],last:"약 $365",c:"−26%",d:"dn"},
-        "AMD":{n:"AMD",p:[500,581,540,505,520],last:"고점 $580.91",c:"변동",d:"nu"},
-        "MU":{n:"Micron",p:[1213,1073,1010,980,975],last:"$975",c:"−19.6%(주간)",d:"dn"},
-        "MRVL":{n:"Marvell",p:[294,316,270,250,246.82],last:"$246.82",c:"−22%",d:"dn"}
-      }
-    };
+    /*AUTO:MKT:START*/
+    var MKT={"asOf":"2026-07-07(실시간 근사)","market":[{"k":"원/달러","v":"₩1,529","s":"전일대비 -0.12%","d":"dn"},{"k":"미 10년물","v":"4.48%","s":"전일대비 -0.13%","d":"dn"},{"k":"SOX 반도체","v":"12,900","s":"전일대비 +2.17%","d":"up"},{"k":"KOSPI","v":"8,051","s":"전일대비 -0.46%","d":"dn"},{"k":"나스닥","v":"26,121","s":"전일대비 +1.12%","d":"up"},{"k":"VIX 변동성","v":"≈16","s":"전일대비 -3.59%","d":"dn"},{"k":"공포·탐욕","v":"공포 ≈30","s":"심리 위축(근사)","d":"dn"},{"k":"DRAM/NAND","v":"+58~75%","s":"Q2 계약가 QoQ 급등","d":"up"},{"k":"HBM","v":"완판","s":"'26 소진·'27 선주문","d":"up"}],"events":[{"n":"FOMC 금리결정","d":"2026-07-29"},{"n":"삼성 2Q 잠정(예상)","d":"2026-07-31"},{"n":"엔비디아 실적(FQ2)","d":"2026-08-26"},{"n":"FOMC + 점도표","d":"2026-09-16"}],"news":[{"t":"반도체株 동반 급락 — 삼성 −9%·SK하이닉스 −15%, AI 수요 둔화 우려","s":"CNBC"},{"t":"SK하이닉스 하루 +10.9% 반등(₩2,425,000), 저가 매수 유입","s":"Investing.com"},{"t":"골드만, 마이크론 목표가 $900→$1,100 상향","s":"AOL"},{"t":"연준 6월 동결·매파 전환 — 점도표 연말 3.8% 인상 시사","s":"Federal Reserve"},{"t":"DRAM 계약가 Q2 +58~63%·NAND +70~75% QoQ — 메모리 초강세","s":"TrendForce"}],"spark":{"005930":{"n":"삼성전자","p":[358500,339500,323000,334000,314500,286000,309500,318000],"last":"₩318,000","c":"0.00%","d":"nu"},"000660":{"n":"SK하이닉스","p":[2917000,2673000,2628000,2650000,2560000,2187000,2425000,2343000],"last":"₩2,343,000","c":"0.00%","d":"nu"},"042700":{"n":"한미반도체","p":[273000,257500,258000,256500,246500,219500,232500,226500],"last":"₩226,500","c":"0.00%","d":"nu"},"039030":{"n":"이오테크닉스","p":[477000,485000,456500,476000,435000,384500,392500,397500],"last":"₩397,500","c":"0.00%","d":"nu"},"058470":{"n":"리노공업","p":[88700,84300,85300,84000,81700,75100,78600,74900],"last":"₩74,900","c":"0.00%","d":"nu"},"NVDA":{"n":"NVIDIA","p":[199,195.74,192.53,194.97,200.09,197.58,194.83,195.55],"last":"$195.55","c":"+0.37%","d":"up"},"AVGO":{"n":"Broadcom","p":[382.07,378.91,365.02,372.45,377.75,369.34,360.45,373.9],"last":"$373.9","c":"+3.73%","d":"up"},"AMD":{"n":"AMD","p":[519.74,532.57,521.58,539.49,580.91,540.88,517.82,552.05],"last":"$552.05","c":"+6.61%","d":"up"},"MU":{"n":"Micron","p":[1048.51,1213.56,1132.33,1145.28,1154.29,1032.28,975.56,984.75],"last":"$984.75","c":"+0.94%","d":"up"},"MRVL":{"n":"Marvell","p":[276.7,281.26,266.77,277.75,297.89,272.05,245.29,249.27],"last":"$249.27","c":"+1.62%","d":"up"}}};
+    /*AUTO:MKT:END*/
     var mnow=new Date();
     function cls(d){return d==='up'?'up':(d==='dn'?'dn':'nu');}
     function col(d){return d==='up'?'#0e9f6e':(d==='dn'?'#e02424':'#5b6577');}
@@ -892,22 +856,15 @@
 </script>
 <script>
 (function(){
-  var UPD="2026-07-05 07:07";
+  /*AUTO:UPD:START*/
+  var UPD="2026-07-07 08:23";
+  /*AUTO:UPD:END*/
   var fr=document.querySelectorAll('[data-fresh]');
   for(var i=0;i<fr.length;i++){fr[i].textContent='갱신 '+UPD;}
 
-  var STOCKS={
-   "005930":{n:"삼성전자",cl:286000,tg:461687,u:"₩",sig:"저평가",ser:[210000,235000,262000,290000,300000,286000,296000,286000]},
-   "000660":{n:"SK하이닉스",cl:2425000,tg:3159000,u:"₩",sig:"저평가",ser:[1900000,2300000,2870000,2987000,2560000,2187000,2425000]},
-   "042700":{n:"한미반도체",cl:232000,tg:300000,u:"₩",sig:"혼재",ser:[145000,190000,244000,276000,248000,232000,238000]},
-   "039030":{n:"이오테크닉스",cl:0,tg:547889,u:"₩",sig:"데이터편차",ser:[300000,360000,440000,470000,445000,410000,428000]},
-   "058470":{n:"리노공업",cl:0,tg:200000,u:"₩",sig:"데이터편차",ser:[150000,158000,162000,150000,138000,145000]},
-   "NVDA":{n:"NVIDIA",cl:194.83,tg:303.84,u:"$",sig:"저평가",ser:[260,300,290,270,240,200,194.83]},
-   "AVGO":{n:"Broadcom",cl:365,tg:493,u:"$",sig:"저평가",ser:[420,495,470,440,400,370,365]},
-   "AMD":{n:"AMD",cl:520,tg:478,u:"$",sig:"혼재",ser:[415,500,581,540,505,520]},
-   "MU":{n:"Micron",cl:975,tg:536,u:"$",sig:"혼재",ser:[103,400,800,1213,1073,1010,975]},
-   "MRVL":{n:"Marvell",cl:246.82,tg:325,u:"$",sig:"저평가",ser:[110,200,294,316,270,250,246.82]}
-  };
+  /*AUTO:STOCKS:START*/
+  var STOCKS={"005930":{"n":"삼성전자","cl":318000,"tg":461687,"u":"₩","sig":"저평가","ser":[358500,339500,323000,334000,314500,286000,309500,318000],"chg":0,"chgLabel":"7/2 −9.1%"},"000660":{"n":"SK하이닉스","cl":2343000,"tg":3159000,"u":"₩","sig":"저평가","ser":[2917000,2673000,2628000,2650000,2560000,2187000,2425000,2343000],"chg":0,"chgLabel":"주간 −12%대"},"042700":{"n":"한미반도체","cl":226500,"tg":300000,"u":"₩","sig":"혼재","ser":[273000,257500,258000,256500,246500,219500,232500,226500],"chg":0,"chgLabel":"'26 급등 후 조정"},"039030":{"n":"이오테크닉스","cl":397500,"tg":547889,"u":"₩","sig":"데이터편차","ser":[477000,485000,456500,476000,435000,384500,392500,397500],"chg":0,"chgLabel":"조정 국면"},"058470":{"n":"리노공업","cl":74900,"tg":200000,"u":"₩","sig":"데이터편차","ser":[88700,84300,85300,84000,81700,75100,78600,74900],"chg":0,"chgLabel":"데이터 편차"},"NVDA":{"n":"NVIDIA","cl":195.55,"tg":303.84,"u":"$","sig":"저평가","ser":[199,195.74,192.53,194.97,200.09,197.58,194.83,195.55],"chg":0.37,"chgLabel":"고점 $300대 → −35%"},"AVGO":{"n":"Broadcom","cl":373.9,"tg":493,"u":"$","sig":"저평가","ser":[382.07,378.91,365.02,372.45,377.75,369.34,360.45,373.9],"chg":3.73,"chgLabel":"고점 $495 → −26%"},"AMD":{"n":"AMD","cl":552.05,"tg":478,"u":"$","sig":"혼재","ser":[519.74,532.57,521.58,539.49,580.91,540.88,517.82,552.05],"chg":6.61,"chgLabel":"7/2 조정"},"MU":{"n":"Micron","cl":984.75,"tg":536,"u":"$","sig":"혼재","ser":[1048.51,1213.56,1132.33,1145.28,1154.29,1032.28,975.56,984.75],"chg":0.94,"chgLabel":"주간 −19.6%"},"MRVL":{"n":"Marvell","cl":249.27,"tg":325,"u":"$","sig":"저평가","ser":[276.7,281.26,266.77,277.75,297.89,272.05,245.29,249.27],"chg":1.62,"chgLabel":"7/2 −12.1%"}};
+  /*AUTO:STOCKS:END*/
   function fmtNum(u,x){if(u==='₩'){return '₩'+Math.round(x).toLocaleString();}return '$'+x;}
   function badgeCls(sig){return sig==='저평가'?'vb-low':(sig==='고평가'?'vb-high':(sig==='적정'?'vb-fair':'vb-mix'));}
   function renderVS(id,list){var el=document.getElementById(id);if(!el)return;var h='';
@@ -945,6 +902,29 @@
     el.innerHTML='<polyline points="'+pts.join(' ')+'" fill="none" stroke="#c8a24b" stroke-width="2.5"/>'+lbl+'<text x="6" y="22" font-size="10" fill="#8a94a6" font-family="sans-serif">100</text><text x="10" y="'+(Hh-24)+'" font-size="10" fill="#8a94a6" font-family="sans-serif">60</text>';})();
 
   var ord=["005930","000660","042700","039030","058470","NVDA","AVGO","AMD","MU","MRVL"];
+
+  function fmtDateKR(ymd){var p=ymd.split('-');return p[0]+'년 '+parseInt(p[1],10)+'월 '+parseInt(p[2],10)+'일';}
+  var asofStr=fmtDateKR(UPD.split(' ')[0]);
+  ['asofHero','asofSnap','asofFoot'].forEach(function(id){var el=document.getElementById(id);if(el)el.textContent=asofStr;});
+
+  (function renderPriceUI(){
+    for(var i=0;i<ord.length;i++){
+      var code=ord[i], o=STOCKS[code]; if(!o) continue;
+      var tp=document.getElementById('tblpx-'+code);
+      if(tp && o.cl){tp.textContent=fmtNum(o.u,o.cl);}
+      var cp=document.getElementById('cardpx-'+code);
+      if(cp && o.cl){cp.textContent=fmtNum(o.u,o.cl);}
+      var cc=document.getElementById('cardchg-'+code);
+      if(cc){
+        if(o.chg!=null){
+          cc.textContent='전일대비 '+(o.chg>0?'+':'')+o.chg.toFixed(2)+'%';
+          cc.className='u '+(o.chg>0?'pos':(o.chg<0?'neg':'n'));
+        }else if(o.chgLabel){
+          cc.textContent=o.chgLabel;
+        }
+      }
+    }
+  })();
   var sel=document.getElementById('detSel');
   if(sel){var oh='';for(var i=0;i<ord.length;i++){oh+='<option value="'+ord[i]+'">'+STOCKS[ord[i]].n+' ('+ord[i]+')</option>';}sel.innerHTML=oh;
     function drawDet(t){var o=STOCKS[t];var el=document.getElementById('detSvg');if(!el)return;var a=o.ser;var mn=Math.min.apply(null,a),mx=Math.max.apply(null,a),rg=(mx-mn)||1,W=600,Hh=170,n=a.length,pts=[];
